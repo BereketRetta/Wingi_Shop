@@ -21,3 +21,14 @@ A Ecommerce Website made with React.js Framework.
 * chnage the directory using the command `cd wingi_shop`
 * install all the dependecies by running the command `yarn`
 * FInally, you can do `yarn start` to start the development server and go to your favorite browser and type `localhost:3000`
+
+
+## Website Struecture
+* There is a home page with all teh products 
+* There is also a contact us page
+* There is bothe sign in and log in page which are fully functional and integrated with firebase
+* After logging in you can see there is a new button called `Go To Dashboard` which will take you to a Dashboard page
+* In the Dashboard page you can add a product using the busson add product and you can edit existing product by pressing edit products
+* When press Add Product you can find a form and there you can all the relevant info and after pressing `Add` the changes will be persisted on firebaste's firestore database
+* Editing also works the same way you can edit existing products and persist it in a firestore database.
+* If changes are not reflected quickly reload the page.
