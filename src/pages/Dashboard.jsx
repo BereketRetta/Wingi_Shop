@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Product } from "../components";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import Products from "../components/Products";
-import { useDispatch, useSelector } from "react-redux";
+import { Navbar } from "../components";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { db, getCollections, storage } from "..";
-import { addAllItems } from "../redux/action";
 import {
   collection,
   addDoc,
@@ -19,8 +17,6 @@ import EditProducts from "../components/EditProducts";
 const Dashboard = () => {
   const [link, setLink] = useState(0);
 
-  const [loading, setLoading] = useState(false);
-
   const navigate = useNavigate();
   // Create Mode
   const [Name, setName] = useState(null);
@@ -29,12 +25,7 @@ const Dashboard = () => {
   const [File, setFile] = useState(null);
   const [Description, setDescription] = useState(null);
 
-  const [DownloadUrl, setDownloadUrl] = useState(null);
-  const [DownloadUrlE, setDownloadUrlE] = useState(null);
-
   let componentMounted = true;
-
-  const dispatch = useDispatch();
 
   let fileInput = React.createRef();
 
@@ -43,17 +34,16 @@ const Dashboard = () => {
 
   useEffect(() => {
     const getProducts = async () => {
-      setLoading(true);
 
       if (componentMounted) {
         getCollections(db).then((data) => {
           // dispatch(addAllItems(data));
           setFilter(data);
         });
-        setLoading(false);
       }
 
       return () => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         componentMounted = false;
       };
     };
@@ -63,7 +53,6 @@ const Dashboard = () => {
 
   const onAddButtonClick = async (e) => {
     e.preventDefault();
-    const link = "";
     if (!File) {
       alert("Please choose a photo first!");
     }
@@ -75,8 +64,6 @@ const Dashboard = () => {
     await uploadBytesResumable(storageRef, File).then(async (value) => {
       console.log(value);
       await getDownloadURL(value.ref).then(async (url) => {
-        setDownloadUrl(url);
-        console.log("URL::", DownloadUrlE);
         const collectionRef = collection(db, "collection");
         const payload = {
           category: Category,
@@ -85,8 +72,6 @@ const Dashboard = () => {
           name: Name,
           price: Price,
         };
-
-        console.log("Payload::", payload);
 
         await addDoc(collectionRef, payload).then((doc) => {
           setDoc(doc, {
@@ -122,7 +107,6 @@ const Dashboard = () => {
       await uploadBytesResumable(storageRef, values.photos[0]).then((value) => {
         console.log(value);
         getDownloadURL(value.ref).then(async (url) => {
-          setDownloadUrlE(url);
           await updateDoc(doc(db, "collection", values.id), {
             ...values,
             photos: [url],

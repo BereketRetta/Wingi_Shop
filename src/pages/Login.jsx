@@ -6,10 +6,9 @@ import * as yup from "yup";
 import { auth } from "..";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-const Login = ({}) => {
+const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const onSubmitPress = async (values) => {
     setError(null)

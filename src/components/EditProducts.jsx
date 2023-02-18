@@ -5,7 +5,6 @@ export default function EditProducts({ product, onSaveClick, onDeleteClick }) {
   // Edit Mode
   const [Edit, setEdit] = useState(false);
   const [NameE, setNameE] = useState(null);
-  const [CategoryE, setCategoryE] = useState(null);
   const [PriceE, setPriceE] = useState(null);
   const [FileE, setFileE] = useState(null);
   const [DescriptionE, setDescriptionE] = useState(null);
@@ -31,7 +30,6 @@ export default function EditProducts({ product, onSaveClick, onDeleteClick }) {
 
   const changeToSave = (product) => {
     setNameE(product.name);
-    setCategoryE(product.description.substring(0, 90));
     setPriceE(product.price);
     setSelectedOption(product.availability);
     setFileE(product.photos[0]);

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addAllItems } from "../redux/action";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -11,8 +9,6 @@ import { db, getCollections } from "..";
 const Products = () => {
   const [loading, setLoading] = useState(false);
   let componentMounted = true;
-
-  const dispatch = useDispatch();
 
   // const AllProducts = useSelector((state) => state.handleAddItems.AllItems);
   const [filter, setFilter] = useState([]);
@@ -32,6 +28,7 @@ const Products = () => {
       }
 
       return () => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         componentMounted = false;
       };
     };

@@ -1,11 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "..";
 
 const Navbar = () => {
-  const state = useSelector((state) => state.handleCart);
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
