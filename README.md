@@ -1,6 +1,6 @@
 # E-Commerce Website
 
-A Ecommerce Website made with React.js Framework.
+Wingi Store Website made with React.js Framework.
 
 
 ## Demo
@@ -17,7 +17,7 @@ A Ecommerce Website made with React.js Framework.
 
 
 ## To Set it Up locally
-* First clone the project `git clone `
+* First clone the project `git clone https://github.com/BereketRetta/Wingi_Shop.git`
 * chnage the directory using the command `cd wingi_shop`
 * install all the dependecies by running the command `yarn`
 * FInally, you can do `yarn start` to start the development server and go to your favorite browser and type `localhost:3000`
