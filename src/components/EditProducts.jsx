@@ -114,7 +114,7 @@ export default function EditProducts({ product, onSaveClick, onDeleteClick }) {
           <div>
             <div>
               <label htmlFor="category" style={{ marginRight: 10 }}>
-                Category
+                Availability
               </label>
               <select value={selectedOption} onChange={handleSelectChange}>
                 <option value="">Is this item still available?</option>
