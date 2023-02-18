@@ -1,4 +1,4 @@
-# E-Commerce Website
+# Wingi Store
 
 Wingi Store Website made with React.js Framework.
 
