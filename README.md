@@ -4,7 +4,7 @@ Wingi Store Website made with React.js Framework.
 
 
 ## Demo
-* [Demo Link](https://63f1382ce9e5a70008a7b9bd--rainbow-kringle-678e83.netlify.app/)
+* [Demo Link](https://63f254503c915f05e4c84b96--rainbow-kringle-678e83.netlify.app/)
 
 ## Demo-Video
 * [Video](https://www.youtube.com/watch?v=7Eocz_D6Yw4&ab_channel=BekiA)
