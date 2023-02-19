@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navbar } from "../components";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { auth, db, getCollections, storage } from "..";
 import {
   collection,
@@ -29,7 +28,6 @@ const Dashboard = () => {
 
   let fileInput = React.createRef();
 
-  const AllProducts = useSelector((state) => state.handleAddItems.AllItems);
   const [filter, setFilter] = useState(null);
 
   useEffect(() => {
