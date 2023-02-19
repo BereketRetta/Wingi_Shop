@@ -53,7 +53,9 @@ const Products = () => {
   };
 
   const filterProduct = (cat) => {
-    const updatedList = filter.filter((item) => item.category === cat);
+    const updatedList = filter.filter(
+      (item) => item.category.toUpperCase() === cat.toUpperCase()
+    );
     setFilter(updatedList);
   };
 
@@ -69,7 +71,7 @@ const Products = () => {
     }
   };
   console.log(filter);
-  let search
+  let search;
   const ShowProducts = () => {
     return (
       <>
@@ -102,7 +104,7 @@ const Products = () => {
         <div className="buttons text-center py-5 w-100">
           <input
             value={search}
-            onChange={(e) => search = e.target.value}
+            onChange={(e) => (search = e.target.value)}
             class="form-control"
             id="Name"
             placeholder="Enter the name of the product"
@@ -115,36 +117,38 @@ const Products = () => {
           </button>
         </div>
 
-        {filter.filter((item) => item.availability === "yes").map((product) => {
-          return (
-            <div
-              id={product.id}
-              key={product.id}
-              className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4"
-            >
-              <div className="card text-center h-100" key={product.id}>
-                <img
-                  className="card-img-top p-3"
-                  src={product.photos[0]}
-                  alt="Card"
-                  height={300}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{product.name}...</h5>
-                  <p className="card-text">
-                    {product.description.substring(0, 90)}...
-                  </p>
-                </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item lead">$ {product.price}</li>
-                </ul>
-                <div className="card-body">
-                  <Link className="btn btn-dark m-1">Buy Now</Link>
+        {filter
+          .filter((item) => item.availability === "yes")
+          .map((product) => {
+            return (
+              <div
+                id={product.id}
+                key={product.id}
+                className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4"
+              >
+                <div className="card text-center h-100" key={product.id}>
+                  <img
+                    className="card-img-top p-3"
+                    src={product.photos[0]}
+                    alt="Card"
+                    height={300}
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{product.name}...</h5>
+                    <p className="card-text">
+                      {product.description.substring(0, 90)}...
+                    </p>
+                  </div>
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item lead">$ {product.price}</li>
+                  </ul>
+                  <div className="card-body">
+                    <Link className="btn btn-dark m-1">Buy Now</Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </>
     );
   };
