@@ -8,7 +8,7 @@ Wingi Store Website made with React.js Framework.
 
 ## Demo-Video
 * [Video](https://www.youtube.com/watch?v=7Eocz_D6Yw4&ab_channel=BekiA)
-* P.S. it ended up being a bit long than i anticipated so I recommend 2x speed :).
+* P.S. it ended up being longer than I anticipated so I recommend 2x speed :).
 
 
 ## Tech Stack
