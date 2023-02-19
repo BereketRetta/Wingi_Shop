@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navbar } from "../components";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { db, getCollections, storage } from "..";
+import { auth, db, getCollections, storage } from "..";
 import {
   collection,
   addDoc,
@@ -30,15 +30,15 @@ const Dashboard = () => {
   let fileInput = React.createRef();
 
   const AllProducts = useSelector((state) => state.handleAddItems.AllItems);
-  const [filter, setFilter] = useState(AllProducts);
+  const [filter, setFilter] = useState(null);
 
   useEffect(() => {
     const getProducts = async () => {
-
       if (componentMounted) {
         getCollections(db).then((data) => {
-          // dispatch(addAllItems(data));
-          setFilter(data);
+          setFilter(
+            data.filter((item) => item.owner_id === auth.currentUser.uid)
+          );
         });
       }
 
@@ -70,6 +70,7 @@ const Dashboard = () => {
           description: Description,
           photos: [url],
           name: Name,
+          owner_id: auth.currentUser.uid,
           price: Price,
         };
 
@@ -80,8 +81,9 @@ const Dashboard = () => {
             description: Description,
             photos: [url],
             name: Name,
+            owner_id: auth.currentUser.uid,
             price: Price,
-            availability: 'yes'
+            availability: "yes",
           });
           console.log("Document written with ID: ", doc.id);
         });
@@ -109,6 +111,7 @@ const Dashboard = () => {
         getDownloadURL(value.ref).then(async (url) => {
           await updateDoc(doc(db, "collection", values.id), {
             ...values,
+            owner_id: auth.currentUser.uid,
             photos: [url],
           });
         });
@@ -232,13 +235,19 @@ const Dashboard = () => {
                 display: "grid",
               }}
             >
-              {filter.map((product) => (
-                <EditProducts
-                  product={product}
-                  onSaveClick={onSaveClick}
-                  onDeleteClick={onDeleteClick}
-                />
-              ))}
+              {filter.length === 0 ? (
+                <div className="col-md-12 py-5 bg-light text-center">
+                  <h4 className="p-3 display-5">No Products To Edit Please add a product first</h4>
+                </div>
+              ) : (
+                filter.map((product) => (
+                  <EditProducts
+                    product={product}
+                    onSaveClick={onSaveClick}
+                    onDeleteClick={onDeleteClick}
+                  />
+                ))
+              )}
             </div>
           )}
         </div>

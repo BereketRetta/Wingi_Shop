@@ -4,7 +4,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 import { Link } from "react-router-dom";
-import { db, getCollections } from "..";
+import { auth, db, getCollections } from "..";
 
 const Products = () => {
   const [loading, setLoading] = useState(false);
