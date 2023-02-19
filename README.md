@@ -26,7 +26,7 @@ Wingi Store Website made with React.js Framework.
 * FInally, you can do `yarn start` to start the development server and go to your favorite browser and type `localhost:3000`
 
 
-## Website Struecture
+## Website Structure
 * There is a home page with all teh products 
 * There is also a contact us page
 * There is bothe sign in and log in page which are fully functional and integrated with firebase
